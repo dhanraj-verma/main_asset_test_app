@@ -152,16 +152,20 @@ packages:
   test_app_1:
     dependency: "direct main"
     description:
-      path: "/Users/dhanrajverma/Documents/learning/test_app_1"
-      relative: false
-    source: path
+      path: "."
+      ref: master
+      resolved-ref: "5761967fa183ea658d0b0e69c4fd986ba28a48e3"
+      url: "git@github.com:dhanraj-verma/asset_test_app_1.git"
+    source: git
     version: "1.0.0+1"
   test_assets:
     dependency: "direct main"
     description:
-      path: "/Users/dhanrajverma/Documents/learning/test_assets"
-      relative: false
-    source: path
+      path: "."
+      ref: master
+      resolved-ref: e8ed803b7b9d73f2c09ff6ee1d6d941e319e6168
+      url: "git@github.com:dhanraj-verma/test_assets.git"
+    source: git
     version: "0.0.1"
   vector_math:
     dependency: transitive
