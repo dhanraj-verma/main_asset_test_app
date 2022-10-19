@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:test_app_1/my_home.dart';
+
+import 'localized_strings.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,7 +14,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
+      locale: Get.deviceLocale,
+      translations: LoalizedStrings(),
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -50,6 +56,7 @@ class MyMainHomePage extends StatefulWidget {
 
 class _MyMainHomePageState extends State<MyMainHomePage> {
   int _counter = 0;
+  bool _languageTougle = true;
 
   void _incrementCounter() {
     setState(() {
@@ -75,6 +82,20 @@ class _MyMainHomePageState extends State<MyMainHomePage> {
         // Here we take the value from the MyMainHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
+        actions: [
+          Switch(
+              value: _languageTougle,
+              onChanged: (value) {
+                if (value) {
+                  Get.updateLocale(const Locale('en', 'US'));
+                } else {
+                  Get.updateLocale(const Locale('hi', 'IN'));
+                }
+                setState(() {
+                  _languageTougle = value;
+                });
+              })
+        ],
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -96,6 +117,7 @@ class _MyMainHomePageState extends State<MyMainHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Text('hello_m'.tr),
             Image.asset(
               "images/flutter_dash.png",
               package: "test_assets",
